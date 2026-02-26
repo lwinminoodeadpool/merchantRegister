@@ -1,0 +1,12 @@
+{
+    "name": "merchant-admin-api",
+    "version": "1.0.0",
+    "description": "AWS Lambda REST API for Merchant Registration Admin Dashboard",
+    "main": "index.js",
+    "dependencies": {
+        "@aws-sdk/client-s3": "^3.995.0",
+        "@aws-sdk/s3-request-presigner": "^3.995.0",
+        "jsonwebtoken": "^9.0.2",
+        "mongodb": "^6.3.0"
+    }
+}
