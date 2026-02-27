@@ -87,6 +87,7 @@ const RegistrationForm = ({ formData, setFormData, onNext, onCancel }) => {
                                 <option value="Leisure">Leisure</option>
                                 <option value="Delivery">Delivery</option>
                                 <option value="General">General</option>
+                                <option value="Retail">Retail</option>
                             </select>
                         </div>
                     </div>
@@ -119,6 +120,7 @@ const RegistrationForm = ({ formData, setFormData, onNext, onCancel }) => {
                                     className={inputClass}
                                     value={formData.phoneNumber}
                                     onChange={(e) => setFormData({ ...formData, phoneNumber: e.target.value.replace(/\D/g, '') })} // Numeric strictly
+                                    maxLength={11}
                                 />
                                 {errors.phoneNumber && <p className="text-red-500 text-xs mt-1 font-medium">{errors.phoneNumber}</p>}
                             </div>

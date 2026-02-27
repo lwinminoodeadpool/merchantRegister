@@ -70,14 +70,14 @@ const ReviewConfirm = ({ formData, onBack, onSubmit }) => {
                         <button
                             onClick={onBack}
                             disabled={isSubmitting}
-                            className="w-1/3 py-3.5 px-4 bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold rounded-xl transition-all duration-200 disabled:opacity-50"
+                            className="w-1/3 py-3 px-2 bg-gray-100 hover:bg-gray-200 text-gray-700 text-sm font-semibold rounded-xl transition-all duration-200 disabled:opacity-50 whitespace-nowrap"
                         >
-                            Edit Details
+                            Edit
                         </button>
                         <button
                             onClick={handleSubmit}
                             disabled={isSubmitting}
-                            className="w-2/3 py-3.5 px-4 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-xl shadow-md transition-all duration-200 active:scale-[0.98] flex justify-center items-center disabled:opacity-70 disabled:active:scale-100"
+                            className="w-2/3 py-3 px-4 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-xl shadow-md transition-all duration-200 active:scale-[0.98] flex justify-center items-center disabled:opacity-70 disabled:active:scale-100"
                         >
                             {isSubmitting ? (
                                 <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">

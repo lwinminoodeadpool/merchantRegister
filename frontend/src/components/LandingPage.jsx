@@ -1,4 +1,6 @@
 import React from 'react';
+import featureImage from '../assets/New 375x667.jpg';
+
 
 const LandingPage = ({ onGetStarted }) => {
     return (
@@ -6,23 +8,14 @@ const LandingPage = ({ onGetStarted }) => {
             {/* Decorative Blur Background Element */}
             <div className="absolute top-10 right-10 w-64 h-64 bg-kbz-blue opacity-5 rounded-full blur-3xl pointer-events-none hidden sm:block"></div>
 
-            <div className="w-full h-[100dvh] sm:h-auto max-w-sm bg-white sm:rounded-3xl shadow-none sm:shadow-xl overflow-hidden border-0 sm:border border-gray-100 flex flex-col z-10 transition-transform sm:hover:scale-[1.01] duration-300">
-
-                {/* Header */}
-                <div className="w-full pt-16 pb-8 flex justify-center bg-white border-b border-gray-100 shrink-0">
-                    <img
-                        src="/assets/KBZPay Logo.png"
-                        alt="KBZPay Logo"
-                        className="h-24 sm:h-32 object-contain drop-shadow-sm"
-                    />
-                </div>
+            <div className="w-full min-h-[100dvh] md:min-h-0 sm:h-auto max-w-sm bg-white sm:rounded-3xl shadow-none sm:shadow-xl overflow-y-auto overflow-x-hidden border-0 sm:border border-gray-100 flex flex-col z-10 transition-transform sm:hover:scale-[1.01] duration-300">
 
                 {/* Feature Image */}
-                <div className="relative w-full flex-1 bg-gray-50 overflow-hidden flex items-center justify-center self-stretch shrink min-h-0 p-4 sm:p-6">
+                <div className="w-full bg-white shrink-0">
                     <img
-                        src="/assets/New 375x667.jpg"
+                        src={featureImage}
                         alt="Merchant Capabilities"
-                        className="w-full h-full object-contain drop-shadow-sm sm:rounded-2xl"
+                        className="w-full h-auto object-cover sm:rounded-t-3xl"
                     />
                 </div>
 
