@@ -39,7 +39,8 @@ const RegistrationForm = ({ formData, setFormData, onNext, onCancel }) => {
         }
     };
 
-    const inputClass = "w-full p-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-kbz-blue/30 focus:border-kbz-blue outline-none transition-all placeholder:text-gray-400 text-sm";
+    const inputClass = "w-full h-[52px] px-4 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-kbz-blue/30 focus:border-kbz-blue outline-none transition-all placeholder:text-gray-400 text-sm flex items-center";
+    const selectClass = `${inputClass} appearance-none cursor-pointer bg-[url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20fill%3D%22none%22%20viewBox%3D%220%200%2024%2024%22%20stroke%3D%22currentColor%22%20stroke-width%3D%222%22%3E%3Cpath%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20d%3D%22M19.5%208.25l-7.5%207.5-7.5-7.5%22%2F%3E%3C%2Fsvg%3E')] bg-[length:1.25rem] bg-[right_1rem_center] bg-no-repeat`;
     const labelClass = "block text-xs font-bold text-gray-700 mb-1.5 uppercase tracking-wide";
 
     return (
@@ -76,18 +77,23 @@ const RegistrationForm = ({ formData, setFormData, onNext, onCancel }) => {
                         <div>
                             <label className={labelClass}>Business Type <span className="text-red-500">*</span></label>
                             <select
-                                className={inputClass}
+                                className={selectClass}
                                 value={formData.businessType}
                                 onChange={(e) => setFormData({ ...formData, businessType: e.target.value })}
                             >
-                                <option value="Shopping">Shopping</option>
-                                <option value="Travel">Travel</option>
-                                <option value="Food">Food</option>
                                 <option value="Astrology">Astrology</option>
-                                <option value="Leisure">Leisure</option>
                                 <option value="Delivery">Delivery</option>
-                                <option value="General">General</option>
-                                <option value="Retail">Retail</option>
+                                <option value="DevelopmentPartner">Development Partner</option>
+                                <option value="Education">Education</option>
+                                <option value="Finance">Finance</option>
+                                <option value="Food">Food</option>
+                                <option value="Health">Health</option>
+                                <option value="Home">Home</option>
+                                <option value="Jewelry">Jewelry</option>
+                                <option value="Leisure">Leisure</option>
+                                <option value="LifeStyle">LifeStyle</option>
+                                <option value="Other">Other</option>
+                                <option value="Travel">Travel</option>
                             </select>
                         </div>
                     </div>
@@ -111,31 +117,29 @@ const RegistrationForm = ({ formData, setFormData, onNext, onCancel }) => {
                             {errors.ownerName && <p className="text-red-500 text-xs mt-1 font-medium">{errors.ownerName}</p>}
                         </div>
 
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div>
-                                <label className={labelClass}>Phone Number <span className="text-red-500">*</span></label>
-                                <input
-                                    type="tel"
-                                    placeholder="09..."
-                                    className={inputClass}
-                                    value={formData.phoneNumber}
-                                    onChange={(e) => setFormData({ ...formData, phoneNumber: e.target.value.replace(/\D/g, '') })} // Numeric strictly
-                                    maxLength={11}
-                                />
-                                {errors.phoneNumber && <p className="text-red-500 text-xs mt-1 font-medium">{errors.phoneNumber}</p>}
-                            </div>
+                        <div>
+                            <label className={labelClass}>Phone Number <span className="text-red-500">*</span></label>
+                            <input
+                                type="tel"
+                                placeholder="09..."
+                                className={inputClass}
+                                value={formData.phoneNumber}
+                                onChange={(e) => setFormData({ ...formData, phoneNumber: e.target.value.replace(/\D/g, '') })} // Numeric strictly
+                                maxLength={11}
+                            />
+                            {errors.phoneNumber && <p className="text-red-500 text-xs mt-1 font-medium">{errors.phoneNumber}</p>}
+                        </div>
 
-                            <div>
-                                <label className={labelClass}>Email Address <span className="text-red-500">*</span></label>
-                                <input
-                                    type="email"
-                                    placeholder="test@example.com"
-                                    className={inputClass}
-                                    value={formData.email}
-                                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                                />
-                                {errors.email && <p className="text-red-500 text-xs mt-1 font-medium">{errors.email}</p>}
-                            </div>
+                        <div>
+                            <label className={labelClass}>Email Address <span className="text-red-500">*</span></label>
+                            <input
+                                type="email"
+                                placeholder="test@example.com"
+                                className={inputClass}
+                                value={formData.email}
+                                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                            />
+                            {errors.email && <p className="text-red-500 text-xs mt-1 font-medium">{errors.email}</p>}
                         </div>
 
                         <div>
@@ -179,7 +183,7 @@ const RegistrationForm = ({ formData, setFormData, onNext, onCancel }) => {
                         </div>
 
                         <div>
-                            <label className={labelClass}>NRC or Director ID (Optional)</label>
+                            <label className={labelClass}>NRC (Optional)</label>
                             <input
                                 type="file"
                                 className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-kbz-blue hover:file:bg-blue-100 transition-colors"

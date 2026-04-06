@@ -77,7 +77,7 @@ const ReviewConfirm = ({ formData, onBack, onSubmit }) => {
                         <button
                             onClick={handleSubmit}
                             disabled={isSubmitting}
-                            className="w-2/3 py-3 px-4 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-xl shadow-md transition-all duration-200 active:scale-[0.98] flex justify-center items-center disabled:opacity-70 disabled:active:scale-100"
+                            className="w-2/3 py-3 px-4 bg-kbz-blue hover:bg-kbz-blue-hover text-white font-semibold rounded-xl shadow-md transition-all duration-200 active:scale-[0.98] flex justify-center items-center disabled:opacity-70 disabled:active:scale-100"
                         >
                             {isSubmitting ? (
                                 <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">

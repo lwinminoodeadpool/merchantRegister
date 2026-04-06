@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 @theme {
-  --color-kbz-blue: #1B3664;
-  --color-kbz-blue-hover: #2B5292;
+  --color-kbz-blue: #0054A6;
+  --color-kbz-blue-hover: #004587;
   --color-kbz-gray-bg: #F5F7FA;
 }
 

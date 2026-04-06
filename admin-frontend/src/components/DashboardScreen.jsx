@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import * as XLSX from 'xlsx';
+
 
 const DashboardScreen = ({ authToken, onLogout }) => {
     const [merchants, setMerchants] = useState([]);
@@ -65,6 +67,52 @@ const DashboardScreen = ({ authToken, onLogout }) => {
         } catch (err) {
             alert(err.message);
         }
+    };
+
+    const handleExportExcel = () => {
+        if (!merchants || merchants.length === 0) {
+            alert('No data to export');
+            return;
+        }
+
+        // Prepare data for Excel
+        const dataToExport = merchants.map(m => ({
+            'Business Name': m.businessName,
+            'Business Type': m.businessType,
+            'Owner Name': m.contactDetails?.ownerName || '',
+            'Phone Number': m.contactDetails?.phoneNumber || '',
+            'Email': m.contactDetails?.email || '',
+            'Address': m.contactDetails?.address || '',
+            'Status': m.status,
+            'Submission Date': new Date(m.createdAt).toLocaleString(),
+            'Documents Count': m.documents?.length || 0,
+            'Document Links': m.documents?.map(doc => doc.url).join(', ') || ''
+        }));
+
+        // Create worksheet
+        const worksheet = XLSX.utils.json_to_sheet(dataToExport);
+
+        // Create workbook
+        const workbook = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(workbook, worksheet, 'Merchants');
+
+        // Set column widths
+        const wscols = [
+            { wch: 25 }, // Business Name
+            { wch: 20 }, // Business Type
+            { wch: 20 }, // Owner Name
+            { wch: 20 }, // Phone Number
+            { wch: 30 }, // Email
+            { wch: 40 }, // Address
+            { wch: 15 }, // Status
+            { wch: 25 }, // Submission Date
+            { wch: 15 }, // Documents Count
+            { wch: 50 }  // Document Links
+        ];
+        worksheet['!cols'] = wscols;
+
+        // Export file
+        XLSX.writeFile(workbook, `merchant_applications_${new Date().toISOString().slice(0, 10)}.xlsx`);
     };
 
     const StatusBadge = ({ status }) => {
@@ -161,13 +209,25 @@ const DashboardScreen = ({ authToken, onLogout }) => {
                 <div className="bg-white shadow-sm border border-gray-100 rounded-2xl overflow-hidden flex flex-col h-[calc(100vh-8rem)]">
                     <div className="px-6 py-5 border-b border-gray-200 flex justify-between items-center bg-gray-50/50">
                         <h2 className="text-lg font-bold text-gray-900">Recent Applications</h2>
-                        <button
-                            onClick={fetchMerchants}
-                            disabled={isLoading}
-                            className="text-sm text-kbz-blue font-semibold bg-blue-50 hover:bg-blue-100 px-3 py-1.5 rounded-lg transition-colors flex items-center gap-2 border border-blue-100"
-                        >
-                            {isLoading ? 'Refreshing...' : 'Refresh Data'}
-                        </button>
+                        <div className="flex gap-3">
+                            <button
+                                onClick={handleExportExcel}
+                                disabled={isLoading || merchants.length === 0}
+                                className="text-sm text-green-700 font-semibold bg-green-50 hover:bg-green-100 px-3 py-1.5 rounded-lg transition-colors flex items-center gap-2 border border-green-100 disabled:opacity-50 disabled:cursor-not-allowed"
+                            >
+                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                </svg>
+                                Export Excel
+                            </button>
+                            <button
+                                onClick={fetchMerchants}
+                                disabled={isLoading}
+                                className="text-sm text-kbz-blue font-semibold bg-blue-50 hover:bg-blue-100 px-3 py-1.5 rounded-lg transition-colors flex items-center gap-2 border border-blue-100"
+                            >
+                                {isLoading ? 'Refreshing...' : 'Refresh Data'}
+                            </button>
+                        </div>
                     </div>
 
                     <div className="overflow-x-auto flex-1 h-full">
