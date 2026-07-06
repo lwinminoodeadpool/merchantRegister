@@ -19,6 +19,7 @@ function App() {
   const [formData, setFormData] = useState({
     businessName: '',
     businessType: 'Shopping',
+    description: '',
     ownerName: '',
     phoneNumber: '',
     email: '',
@@ -35,6 +36,7 @@ function App() {
       const data = new FormData();
       data.append('businessName', formData.businessName);
       data.append('businessType', formData.businessType);
+      data.append('description', formData.description);
       data.append('ownerName', formData.ownerName);
       data.append('phoneNumber', formData.phoneNumber);
       data.append('email', formData.email);
@@ -71,7 +73,7 @@ function App() {
 
   const handleReset = () => {
     setFormData({
-      businessName: '', businessType: 'Shopping', ownerName: '',
+      businessName: '', businessType: 'Shopping', description: '', ownerName: '',
       phoneNumber: '', email: '', address: '', kycData: '', businessLicense: null, nrcFront: null
     });
     setCurrentScreen('landing');
@@ -104,8 +106,8 @@ function App() {
 
       {/* Success Modal overlay */}
       {currentScreen === 'success' && (
-        <div className="flex flex-col items-center justify-center min-h-screen p-4 bg-kbz-gray-bg">
-          <div className="bg-white p-8 rounded-3xl shadow-xl max-w-sm w-full text-center border border-green-100 transform transition-all">
+        <div className="flex flex-col items-center justify-center min-h-screen p-4 sm:p-8 bg-kbz-gray-bg">
+          <div className="bg-white p-10 sm:p-12 rounded-[2.5rem] shadow-2xl max-w-lg w-full text-center border border-green-50/50 transform transition-all">
             <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
               <svg className="w-10 h-10 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7"></path></svg>
             </div>
@@ -124,8 +126,8 @@ function App() {
 
       {/* Error Modal overlay */}
       {currentScreen === 'error' && (
-        <div className="flex flex-col items-center justify-center min-h-screen p-4 bg-kbz-gray-bg">
-          <div className="bg-white p-8 rounded-3xl shadow-xl max-w-sm w-full text-center border border-red-100">
+        <div className="flex flex-col items-center justify-center min-h-screen p-4 sm:p-8 bg-kbz-gray-bg">
+          <div className="bg-white p-10 sm:p-12 rounded-[2.5rem] shadow-2xl max-w-lg w-full text-center border border-red-50/50">
             <div className="w-20 h-20 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-6">
               <svg className="w-10 h-10 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path></svg>
             </div>
