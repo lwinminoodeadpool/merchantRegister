@@ -81,6 +81,7 @@ const DashboardScreen = ({ authToken, onLogout }) => {
             'No.': index + 1,
             'Business Name': m.businessName,
             'Type': m.businessType,
+            'Description': m.description || '',
             'Owner Name': m.contactDetails?.ownerName || '',
             'Phone': m.contactDetails?.phoneNumber || '',
             'Email': m.contactDetails?.email || '',
@@ -105,6 +106,7 @@ const DashboardScreen = ({ authToken, onLogout }) => {
             { wch: 5 },  // No.
             { wch: 25 }, // Business Name
             { wch: 20 }, // Type
+            { wch: 30 }, // Description
             { wch: 20 }, // Owner Name
             { wch: 15 }, // Phone
             { wch: 25 }, // Email
@@ -275,6 +277,7 @@ const DashboardScreen = ({ authToken, onLogout }) => {
                                             <th className="whitespace-nowrap">No.</th>
                                             <th className="whitespace-nowrap">Business Name</th>
                                             <th className="whitespace-nowrap">Type</th>
+                                            <th className="whitespace-nowrap max-w-[200px]">Description</th>
                                             <th className="whitespace-nowrap">Owner Name</th>
                                             <th className="whitespace-nowrap">Phone</th>
                                             <th className="whitespace-nowrap">Email</th>
@@ -298,6 +301,9 @@ const DashboardScreen = ({ authToken, onLogout }) => {
                                                 <td className="text-gray-900 font-medium whitespace-nowrap">{index + 1}</td>
                                                 <td className="text-gray-900 font-medium whitespace-nowrap">{merchant.businessName}</td>
                                                 <td className="text-gray-700 whitespace-nowrap">{merchant.businessType}</td>
+                                                <td className="text-gray-700 whitespace-nowrap max-w-[200px] truncate" title={merchant.description}>
+                                                    {merchant.description}
+                                                </td>
                                                 <td className="text-gray-800 whitespace-nowrap">{merchant.contactDetails?.ownerName}</td>
                                                 <td className="text-gray-700 whitespace-nowrap">{merchant.contactDetails?.phoneNumber}</td>
                                                 <td className="text-gray-700 whitespace-nowrap">{merchant.contactDetails?.email}</td>
