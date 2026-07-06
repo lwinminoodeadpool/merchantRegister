@@ -111,6 +111,7 @@ exports.handler = async (event, context) => {
         const {
             businessName,
             businessType, // e.g. "Mini app" or "Event"
+            description, // Business description
             ownerName,
             phoneNumber, // Numeric Input
             email,       // Email Input
@@ -185,6 +186,7 @@ exports.handler = async (event, context) => {
         const newMerchant = {
             businessName,
             businessType,
+            description,
             contactDetails: {
                 ownerName,
                 phoneNumber,

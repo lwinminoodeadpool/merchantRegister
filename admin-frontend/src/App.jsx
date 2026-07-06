@@ -18,7 +18,7 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-kbz-gray-bg font-sans">
+    <div className="min-h-screen bg-vibrant-gradient font-sans">
       {!authToken ? (
         <LoginScreen onLogin={(token) => setAuthToken(token)} />
       ) : (
