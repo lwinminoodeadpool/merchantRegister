@@ -20,6 +20,9 @@ const RegistrationForm = ({ formData, setFormData, onNext, onCancel }) => {
         if (!formData.address?.trim()) {
             newErrors.address = 'Business Address is required';
         }
+        if (!formData.description?.trim()) {
+            newErrors.description = 'Description is required';
+        }
         // Business License is now optional
 
         setErrors(newErrors);
@@ -162,7 +165,7 @@ const RegistrationForm = ({ formData, setFormData, onNext, onCancel }) => {
                             </div>
 
                             <div className="md:col-span-2">
-                                <label className={labelClass}>Description</label>
+                                <label className={labelClass}>Description <span className="text-red-500">*</span></label>
                                 <textarea
                                     rows={5}
                                     placeholder="Please briefly tell us about your business and your preferred KBZPay partnership service."
@@ -170,6 +173,7 @@ const RegistrationForm = ({ formData, setFormData, onNext, onCancel }) => {
                                     value={formData.description || ''}
                                     onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                                 />
+                                {errors.description && <p className="text-red-500 text-xs mt-1 font-medium">{errors.description}</p>}
                             </div>
                         </div>
                     </div>

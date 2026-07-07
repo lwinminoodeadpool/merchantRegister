@@ -25,7 +25,7 @@ const LoginScreen = ({ onLogin }) => {
             const data = await response.json();
 
             if (response.ok && data.token) {
-                onLogin(data.token);
+                onLogin(data.token, data.role, data.id);
             } else {
                 setError(data.message || 'Login failed. Please check credentials.');
             }
