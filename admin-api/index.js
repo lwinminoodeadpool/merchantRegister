@@ -200,7 +200,7 @@ exports.handler = async (event, context) => {
                 return buildResponse(200, { data: merchants });
             }
 
-            if (method === 'PUT') {
+            if (method === 'POST') {
                 const body = JSON.parse(event.body || "{}");
                 if (!body.id) return buildResponse(400, { message: 'Missing merchant id' });
 

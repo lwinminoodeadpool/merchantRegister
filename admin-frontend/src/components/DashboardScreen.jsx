@@ -81,7 +81,7 @@ const DashboardScreen = ({ authToken, userRole, userId, onLogout }) => {
     const updateMerchantStatus = async (id, newStatus) => {
         try {
             const response = await fetch(getApiUrl('merchants'), {
-                method: 'PUT',
+                method: 'POST',
                 headers: { 'Authorization': `Bearer ${authToken}`, 'Content-Type': 'application/json' },
                 body: JSON.stringify({ id, actionType: 'status', status: newStatus })
             });
@@ -98,7 +98,7 @@ const DashboardScreen = ({ authToken, userRole, userId, onLogout }) => {
     const assignMerchant = async (id, assignedUserId) => {
         try {
             const response = await fetch(getApiUrl('merchants'), {
-                method: 'PUT',
+                method: 'POST',
                 headers: { 'Authorization': `Bearer ${authToken}`, 'Content-Type': 'application/json' },
                 body: JSON.stringify({ id, actionType: 'assign', assignedTo: assignedUserId })
             });
@@ -343,7 +343,7 @@ const DashboardScreen = ({ authToken, userRole, userId, onLogout }) => {
                                                                 value={merchant.assignedTo || ''}
                                                                 onChange={(e) => assignMerchant(merchant._id, e.target.value)}
                                                             >
-                                                                <option value="" disabled className="bg-gray-800 text-gray-400">Unassigned</option>
+                                                                <option value="" className="bg-gray-800 text-gray-400">Unassigned</option>
                                                                 {users.filter(u => u.role === 'user').map(u => (
                                                                     <option key={u._id} value={u._id} className="bg-gray-800 text-white">{u.username}</option>
                                                                 ))}
